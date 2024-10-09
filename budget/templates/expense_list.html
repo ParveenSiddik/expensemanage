@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+
+{%block main_block%}
+
+<div class="container mt-5">
+    <div class="row">
+    {%for t in expenses%}
+    <div class="col-4">
+
+        <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header d-flex justify-content-between">
+                <div> {{t.user}}</div>
+                <div> {{t.amount}}</div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{t.title}}</h5>
+                <p class="card-text">{{t.category}}</p>
+            </div>
+            <div class="card-footer text-body-white">
+                created_date:{{t.created_date|date}}
+                <a class="btn btn-dark bg-secondary" href="{%url 'expense_update' t.id%}" role="button">Update</a>
+                <a class="btn btn-dark bg-secondary" href="{%url 'expense_delete' t.id%}" role="button">Delete</a>
+            </div>
+        </div>
+    
+    </div>  
+    {%endfor%}
+
+
+    </div>
+
+    </div>
+</div>
+
+
+{%endblock%}   
+{%block script_block%}
+{%endblock%}
